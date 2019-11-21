@@ -118,7 +118,7 @@ class ExampleWidget extends JPanel implements SpotListener {
 	}
 
 	@Override
-	public void spotEntered(Spot spot){
+	void spotEntered(Spot spot){
 		if(gameWon)
 			return
 
@@ -126,7 +126,7 @@ class ExampleWidget extends JPanel implements SpotListener {
 	}
 
 	@Override
-	public void spotExited(Spot spot){
+	void spotExited(Spot spot){
 		spot.unhighlightSpot()
 	}
 }
