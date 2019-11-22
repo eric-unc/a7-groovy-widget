@@ -10,6 +10,7 @@ import javax.swing.JPanel
  * <ul>
  * <li>Convert to a script (LIKE A BOSS).</li>
  * <li>Closures.</li>
+ * <li>Remove unneeded ()</li>
  * </ul>
  * 
  * @author KMP, Eric Schneider
