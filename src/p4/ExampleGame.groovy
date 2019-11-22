@@ -9,6 +9,7 @@ import javax.swing.JPanel
  * Changes made:
  * <ul>
  * <li>Convert to a script (LIKE A BOSS).</li>
+ * <li>Closures.</li>
  * </ul>
  * 
  * @author KMP, Eric Schneider

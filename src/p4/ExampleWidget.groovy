@@ -36,7 +36,7 @@ class ExampleWidget extends JPanel implements SpotListener {
 		resetMessagePanel.setLayout(new BorderLayout())
 
 		def resetButton = new JButton("Restart")
-		resetButton.addActionListener {e -> resetGame()}
+		resetButton.addActionListener {resetGame()}
 		resetMessagePanel.add resetButton, BorderLayout.EAST
 		resetMessagePanel.add message, BorderLayout.CENTER
 
@@ -47,12 +47,11 @@ class ExampleWidget extends JPanel implements SpotListener {
 		resetGame()
 	}
 
-	private void resetGame(){
-		for(def spot : board)
-			spot.clearSpot()
+	def resetGame = { ->
+		board.each {spot -> spot.clearSpot()}
 
 		if(secretSpot != null)
-			secretSpot.background = secretSpotBG;
+			secretSpot.background = secretSpotBG
 
 		// Pick a new secret spot.
 		def secretX = (int) (Math.random() * board.spotWidth)
@@ -91,6 +90,7 @@ class ExampleWidget extends JPanel implements SpotListener {
 		spot.toggleSpot()
 
 		gameWon = (spot == secretSpot)
+		
 		if(gameWon)
 			spot.background = Color.RED;
 
@@ -101,12 +101,13 @@ class ExampleWidget extends JPanel implements SpotListener {
 			if(gameWon){
 				def score = board.spotWidth * board.spotHeight
 				
-				for(def boardSpot : board)
+				board.each {boardSpot ->
 					if(!boardSpot.isEmpty())
 						if(boardSpot.spotColor == playerColor)
 							score--
 						else
 							score++
+				}
 
 				message.setText("${playerName} found the secret spot at ${spot.coordString}. Score: ${score}. Game over.")
 			}else
